@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VideoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VideoController">
    <children>
-      <TextArea fx:id="areaTexto" layoutX="446.0" layoutY="40.0" prefHeight="422.0" prefWidth="296.0" />
-      <Button fx:id="selecionaArquivo" layoutX="519.0" layoutY="469.0" mnemonicParsing="false" onAction="#avancaImagem" text="Selecionar outro arquivo " />
-      <MediaView fx:id="mediaView" fitHeight="240.0" fitWidth="426.0" layoutX="10.0" layoutY="104.0" />
+      <TextArea fx:id="areaTexto" layoutX="461.0" layoutY="46.0" prefHeight="401.0" prefWidth="281.0" />
+      <Button fx:id="selecionaArquivo" layoutX="527.0" layoutY="493.0" mnemonicParsing="false" onAction="#avancaImagem" text="Selecionar outro arquivo " />
+      <MediaView fx:id="mediaView" fitHeight="240.0" fitWidth="426.0" layoutX="15.0" layoutY="105.0" />
       <Button fx:id="playButton" layoutX="209.0" layoutY="359.0" mnemonicParsing="false" onAction="#playVideo" text="play" />
-      <Button fx:id="pauseButton" layoutX="136.0" layoutY="359.0" mnemonicParsing="false" onAction="#pauseVideo" text="pause" />
-      <Button fx:id="resetButton" layoutX="268.0" layoutY="359.0" mnemonicParsing="false" onAction="#resetVideo" text="reset" />
-      <Button fx:id="buttonAvanca" layoutX="610.0" layoutY="511.0" mnemonicParsing="false" onAction="#avancaLista" text="Avançar" />
-      <Button fx:id="voltarButton" layoutX="519.0" layoutY="511.0" mnemonicParsing="false" onAction="#voltarLista" text="Voltar" />
+      <Button fx:id="pauseButton" layoutX="143.0" layoutY="359.0" mnemonicParsing="false" onAction="#pauseVideo" text="pause" />
+      <Button fx:id="resetButton" layoutX="264.0" layoutY="359.0" mnemonicParsing="false" onAction="#resetVideo" text="reset" />
+      <Button fx:id="buttonAvanca" layoutX="618.0" layoutY="457.0" mnemonicParsing="false" onAction="#avancaLista" text="Avançar" />
+      <Button fx:id="voltarButton" layoutX="527.0" layoutY="457.0" mnemonicParsing="false" onAction="#voltarLista" text="Voltar" />
+      <Text layoutX="484.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metadados extraídos">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
