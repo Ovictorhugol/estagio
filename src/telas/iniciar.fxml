@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InicioController">
+   <children>
+      <Button fx:id="iniciarButton" layoutX="182.0" layoutY="267.0" mnemonicParsing="false" onAction="#IniciaCena" prefHeight="51.0" prefWidth="155.0" text="Iniciar" />
+      <Text layoutX="65.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar extração de Metadados" textAlignment="CENTER" wrappingWidth="394.2109375">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonArquivo" layoutX="200.0" layoutY="215.0" mnemonicParsing="false" onAction="#selecaoArquivo" text="Selecione o arquivo " />
+      <ListView fx:id="listView" layoutX="14.0" layoutY="201.0" prefHeight="117.0" prefWidth="140.0" />
+   </children>
+</AnchorPane>
