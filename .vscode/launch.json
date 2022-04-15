@@ -6,10 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "estagio_ec595be9",
+            "vmArgs": "--module-path \"C:/Users/victo/Desktop/Java/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media"
+        },
+        {
+            "type": "java",
             "name": "Launch ExtratorMetadadosJPEGMPEG4",
             "request": "launch",
             "mainClass": "ExtratorMetadadosJPEGMPEG4",
-            "projectName": "ExtratorMetadadosJPEGMPEG4_8386790f"
+            "projectName": "ExtratorMetadadosJPEGMPEG4_8386790f",
+            "vmArgs": "--module-path \"C:/Users/victo/Desktop/Java/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media"
         },
         {
             "type": "java",
@@ -17,7 +26,7 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "ExtratorMetadadosJPEGMPEG4_8386790f",
-            "vmArgs": "--module-path \"C:/Users/victo/OneDrive/Área de Trabalho/Java/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media"
+            "vmArgs": "--module-path \"C:/Users/victo/Desktop/Java/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media"
         }
     ]
 }
