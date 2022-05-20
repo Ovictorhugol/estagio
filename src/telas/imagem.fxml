@@ -8,15 +8,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ImagemController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="357.0" fitWidth="354.0" layoutX="15.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="areaTexto" layoutX="386.0" layoutY="74.0" prefHeight="363.0" prefWidth="296.0" />
-      <Button fx:id="avancaCena" layoutX="461.0" layoutY="481.0" mnemonicParsing="false" onAction="#avancaImagem" text="Selecionar outro arquivo" />
-      <Button fx:id="buttonAvancar" layoutX="548.0" layoutY="447.0" mnemonicParsing="false" onAction="#avancarArquivo" text="Avançar" />
-      <Button fx:id="buttonVoltar" layoutX="461.0" layoutY="447.0" mnemonicParsing="false" onAction="#voltarArquivo" text="Voltar" />
-      <Text layoutX="424.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metadados Extraídos " wrappingWidth="219.9248046875">
+      <ImageView fx:id="imageView" fitHeight="376.0" fitWidth="354.0" layoutX="15.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="areaTexto" layoutX="386.0" layoutY="107.0" prefHeight="357.0" prefWidth="296.0" />
+      <Button fx:id="avancaCena" layoutX="102.0" layoutY="463.0" mnemonicParsing="false" onAction="#avancaImagem" text="Selecionar outro arquivo" />
+      <Button fx:id="buttonAvancar" layoutX="548.0" layoutY="472.0" mnemonicParsing="false" onAction="#avancarArquivo" text="Avançar" />
+      <Button fx:id="buttonVoltar" layoutX="461.0" layoutY="472.0" mnemonicParsing="false" onAction="#voltarArquivo" text="Voltar" />
+      <Text layoutX="438.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metadados Extraídos " wrappingWidth="219.9248046875">
          <font>
             <Font size="23.0" />
          </font>
       </Text>
+      <Pane layoutX="380.0" layoutY="34.0" prefHeight="87.0" prefWidth="309.0">
+         <children>
+            <TextField fx:id="campoPesquisa" layoutX="6.0" layoutY="31.0" prefHeight="25.0" prefWidth="228.0" promptText="Fazer uma pesquisa nos arquivos..." />
+            <Button fx:id="buttonPesquisa" layoutX="242.0" layoutY="31.0" mnemonicParsing="false" onAction="#pesquisaArquivo" text="Pesquisar" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

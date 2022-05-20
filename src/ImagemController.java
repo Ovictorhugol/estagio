@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -41,6 +42,12 @@ public class ImagemController implements Initializable {
 
     @FXML
     private Button buttonAvancar;
+
+    @FXML
+    private TextField campoPesquisa;
+
+    @FXML
+    private Button buttonPesquisa;
 
     public String caminhoTxt;
     public String caminhoArquivo;
@@ -88,6 +95,7 @@ public class ImagemController implements Initializable {
         }
 
     }
+    
 
     @FXML
     void avancarArquivo(ActionEvent event) throws IOException {
@@ -103,7 +111,7 @@ public class ImagemController implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
+            
         }
     }
 
@@ -126,5 +134,11 @@ public class ImagemController implements Initializable {
             stage.show();
 
         }
+    }
+
+
+    @FXML
+    void pesquisaArquivo(ActionEvent event) {
+
     }
 }
