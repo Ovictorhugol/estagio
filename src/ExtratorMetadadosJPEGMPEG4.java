@@ -21,6 +21,7 @@ import com.drew.metadata.Tag;
 /**
  *
  * @author joao
+ * @author Victor 
  */
 public class ExtratorMetadadosJPEGMPEG4 {
 

@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -12,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -55,6 +58,7 @@ public class ImagemController implements Initializable {
     public File arquivoTexto;
     public Image image;
     public Scanner input;
+    
 
     @FXML
     void avancaImagem(ActionEvent event) throws IOException {
@@ -120,8 +124,7 @@ public class ImagemController implements Initializable {
 
         if (Arquivo.indice < 0) {
             System.out.println("Fim dos arquivos");
-        }
-        if (Arquivo.vetor[Arquivo.indice] == null) {
+        }else if (Arquivo.vetor[Arquivo.indice] == null) {
             Arquivo.indice--;
         } else {
             Arquivo.indice--;
@@ -139,6 +142,22 @@ public class ImagemController implements Initializable {
 
     @FXML
     void pesquisaArquivo(ActionEvent event) {
+        FileReader arquivo = null;
+        String textoArquivo;
+        String pesquisa = String.valueOf(campoPesquisa.getText());
+        
+        try {
+        arquivo = new FileReader(new File(Arquivo.vetor[0]+".txt"));
+        System.out.println(Arquivo.vetor[0]);
+        Scanner scanner = new Scanner(arquivo);
+        while(scanner.hasNextLine()) {
+            String linha  = scanner.nextLine();
+            String [] line = linha.split(" ");
+            System.out.println(linha);
+        }
+        } catch (IOException erro) {
+            
+        }
 
     }
 }
