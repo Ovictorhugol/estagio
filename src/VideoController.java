@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -33,7 +36,16 @@ public class VideoController implements Initializable {
     private Button selecionaArquivo;
 
     @FXML
+    private Button pauseButton;
+
+    @FXML
+    private Button buttonAvanca;
+
+    @FXML
     private TextArea areaTexto;
+
+    @FXML
+    private TextField campoPesquisa;
 
     @FXML
     private MediaView mediaView;
@@ -42,16 +54,13 @@ public class VideoController implements Initializable {
     private Button playButton;
 
     @FXML
-    private Button pauseButton;
+    private Button voltarButton;
 
     @FXML
     private Button resetButton;
 
     @FXML
-    private Button buttonAvanca;
-
-    @FXML
-    private Button voltarButton;
+    private Button buttonPesquisa;
 
     public File file;
 
@@ -145,11 +154,8 @@ public class VideoController implements Initializable {
 
     @FXML
     void voltarLista(ActionEvent event) throws IOException {
-        if (Arquivo.indice == 0) {
+        if (Arquivo.indice <= 0) {
             System.out.println("Fim dos arquivos");
-        }
-        if (Arquivo.vetor[Arquivo.indice] == null) {
-            Arquivo.indice--;
         } else {
             Arquivo.indice--;
             System.out.println(Arquivo.vetor[Arquivo.indice]);
@@ -160,6 +166,78 @@ public class VideoController implements Initializable {
             stage.setScene(scene);
             stage.show();
 
+        }
+    }
+
+
+    @FXML
+    void pesquisaArquivo(ActionEvent event) throws IOException {
+        FileReader arquivo = null;
+        BufferedReader leitor = null;
+        String pesquisa = String.valueOf(campoPesquisa.getText());
+        int indicePesquisa = 0;
+      
+        try {
+            for(int j =0; j<Arquivo.vetor.length; j++) {
+                arquivo = new FileReader(new File(Arquivo.vetor[j]+".txt"));
+                // System.out.println(Arquivo.vetor[j]);
+                Scanner scanner = new Scanner(arquivo);
+                while(scanner.hasNextLine()) {
+                    String linha  = scanner.nextLine();
+                    String [] line = linha.split(" ");
+                    // System.out.println(pesquisa);
+                    
+                        
+                        for(int i = 0; i < line.length;i++) {
+                            // System.out.println(line[i]+"\n");
+                            // System.out.println(i + line[i]);
+                            if(stringCompare(line[i], pesquisa) == 0){
+                                System.out.println("Encontrei essa palavra");
+                                
+                                Arquivo.pesquisaVetor[indicePesquisa] = Arquivo.vetor[j];
+                                System.out.println(Arquivo.pesquisaVetor[indicePesquisa]);
+                                indicePesquisa++;
+                            }else{
+                                // System.out.println("Não encontrei nenhum palavra relacionada a essa pesquisa");
+                            }
+                        }
+                }
+            }
+
+            
+        } catch (IOException erro) {
+            
+        }
+        Parent root = FXMLLoader.load(getClass().getResource("telas/pesquisaVideo.fxml"));
+        Stage janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        janela.setScene(scene);
+        janela.show();
+    }
+
+    public static int stringCompare(String str1, String str2)
+    {
+  
+        int l1 = str1.length();
+        int l2 = str2.length();
+        int lmin = Math.min(l1, l2);
+  
+        for (int i = 0; i < lmin; i++) {
+            int str1_ch = (int)str1.charAt(i);
+            int str2_ch = (int)str2.charAt(i);
+  
+            if (str1_ch != str2_ch) {
+                return str1_ch - str2_ch;
+            }
+        }
+  
+        
+        if (l1 != l2) {
+            return l1 - l2;
+        }
+  
+        else {
+            return 0;
         }
     }
 

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  * @author Victor
  */
 
-public class pesquisaController implements Initializable {
+public class pesquisaImagemController implements Initializable {
 
     @FXML
     private ListView <String> listView;

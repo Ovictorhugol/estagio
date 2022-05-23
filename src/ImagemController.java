@@ -178,7 +178,7 @@ public class ImagemController implements Initializable {
         } catch (IOException erro) {
             
         }
-        Parent root = FXMLLoader.load(getClass().getResource("telas/pesquisa.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("telas/pesquisaImagem.fxml"));
         janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         janela.setScene(scene);
@@ -199,15 +199,11 @@ public class ImagemController implements Initializable {
                 return str1_ch - str2_ch;
             }
         }
-  
-        // Edge case for strings like
-        // String 1="Geeks" and String 2="Geeksforgeeks"
+
         if (l1 != l2) {
             return l1 - l2;
         }
-  
-        // If none of the above conditions is true,
-        // it implies both the strings are equal
+ 
         else {
             return 0;
         }
