@@ -30,6 +30,7 @@ public class ImagemController implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    private Stage janela;
 
     @FXML
     private Button avancaCena;
@@ -64,6 +65,7 @@ public class ImagemController implements Initializable {
     void avancaImagem(ActionEvent event) throws IOException {
         for (Arquivo.indice = 0; Arquivo.indice < Arquivo.vetor.length; Arquivo.indice++) {
             Arquivo.vetor[Arquivo.indice] = null;
+            Arquivo.pesquisaVetor[Arquivo.indice] = null;
         }
         Arquivo.indice = 0;
         Parent root = FXMLLoader.load(getClass().getResource("telas/iniciar.fxml"));
@@ -121,11 +123,9 @@ public class ImagemController implements Initializable {
 
     @FXML
     void voltarArquivo(ActionEvent event) throws IOException {
-
-        if (Arquivo.indice < 0) {
+        System.out.println(Arquivo.indice);
+        if (Arquivo.indice <= 0) {
             System.out.println("Fim dos arquivos");
-        }else if (Arquivo.vetor[Arquivo.indice] == null) {
-            Arquivo.indice--;
         } else {
             Arquivo.indice--;
             System.out.println(Arquivo.vetor[Arquivo.indice]);
@@ -141,23 +141,76 @@ public class ImagemController implements Initializable {
 
 
     @FXML
-    void pesquisaArquivo(ActionEvent event) {
+    void pesquisaArquivo(ActionEvent event) throws IOException {
         FileReader arquivo = null;
-        String textoArquivo;
+        BufferedReader leitor = null;
         String pesquisa = String.valueOf(campoPesquisa.getText());
-        
+        int indicePesquisa = 0;
+      
         try {
-        arquivo = new FileReader(new File(Arquivo.vetor[0]+".txt"));
-        System.out.println(Arquivo.vetor[0]);
-        Scanner scanner = new Scanner(arquivo);
-        while(scanner.hasNextLine()) {
-            String linha  = scanner.nextLine();
-            String [] line = linha.split(" ");
-            System.out.println(linha);
-        }
+            for(int j =0; j<Arquivo.vetor.length; j++) {
+                arquivo = new FileReader(new File(Arquivo.vetor[j]+".txt"));
+                // System.out.println(Arquivo.vetor[j]);
+                Scanner scanner = new Scanner(arquivo);
+                while(scanner.hasNextLine()) {
+                    String linha  = scanner.nextLine();
+                    String [] line = linha.split(" ");
+                    // System.out.println(pesquisa);
+                    
+                        
+                        for(int i = 0; i < line.length;i++) {
+                            // System.out.println(line[i]+"\n");
+                            // System.out.println(i + line[i]);
+                            if(stringCompare(line[i], pesquisa) == 0){
+                                System.out.println("Encontrei essa palavra");
+                                
+                                Arquivo.pesquisaVetor[indicePesquisa] = Arquivo.vetor[j];
+                                System.out.println(Arquivo.pesquisaVetor[indicePesquisa]);
+                                indicePesquisa++;
+                            }else{
+                                // System.out.println("Não encontrei nenhum palavra relacionada a essa pesquisa");
+                            }
+                        }
+                }
+            }
+
+            
         } catch (IOException erro) {
             
         }
-
+        Parent root = FXMLLoader.load(getClass().getResource("telas/pesquisa.fxml"));
+        janela = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        janela.setScene(scene);
+        janela.show();
     }
+    public static int stringCompare(String str1, String str2)
+    {
+  
+        int l1 = str1.length();
+        int l2 = str2.length();
+        int lmin = Math.min(l1, l2);
+  
+        for (int i = 0; i < lmin; i++) {
+            int str1_ch = (int)str1.charAt(i);
+            int str2_ch = (int)str2.charAt(i);
+  
+            if (str1_ch != str2_ch) {
+                return str1_ch - str2_ch;
+            }
+        }
+  
+        // Edge case for strings like
+        // String 1="Geeks" and String 2="Geeksforgeeks"
+        if (l1 != l2) {
+            return l1 - l2;
+        }
+  
+        // If none of the above conditions is true,
+        // it implies both the strings are equal
+        else {
+            return 0;
+        }
+    }
+  
 }
