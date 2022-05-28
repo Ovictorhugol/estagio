@@ -154,8 +154,11 @@ public class VideoController implements Initializable {
 
     @FXML
     void voltarLista(ActionEvent event) throws IOException {
-        if (Arquivo.indice <= 0) {
+        if (Arquivo.indice == 0) {
             System.out.println("Fim dos arquivos");
+        }
+        if (Arquivo.vetor[Arquivo.indice] == null) {
+            Arquivo.indice--;
         } else {
             Arquivo.indice--;
             System.out.println(Arquivo.vetor[Arquivo.indice]);
@@ -174,7 +177,10 @@ public class VideoController implements Initializable {
     void pesquisaArquivo(ActionEvent event) throws IOException {
         FileReader arquivo = null;
         BufferedReader leitor = null;
+        String pesquisaUppercase = null;
+        String linhaUppercase = null;
         String pesquisa = String.valueOf(campoPesquisa.getText());
+        pesquisaUppercase = pesquisa.toUpperCase();
         int indicePesquisa = 0;
       
         try {
@@ -191,7 +197,8 @@ public class VideoController implements Initializable {
                         for(int i = 0; i < line.length;i++) {
                             // System.out.println(line[i]+"\n");
                             // System.out.println(i + line[i]);
-                            if(stringCompare(line[i], pesquisa) == 0){
+                            linhaUppercase = line[i].toUpperCase();
+                            if(stringCompare(linhaUppercase, pesquisaUppercase) == 0){
                                 System.out.println("Encontrei essa palavra");
                                 
                                 Arquivo.pesquisaVetor[indicePesquisa] = Arquivo.vetor[j];

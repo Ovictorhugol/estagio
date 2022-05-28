@@ -13,10 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -143,8 +145,11 @@ public class ImagemController implements Initializable {
     @FXML
     void pesquisaArquivo(ActionEvent event) throws IOException {
         FileReader arquivo = null;
+        String pesquisaUppercase = null;
+        String linhaUppercase = null;
         BufferedReader leitor = null;
         String pesquisa = String.valueOf(campoPesquisa.getText());
+        pesquisaUppercase = pesquisa.toUpperCase();
         int indicePesquisa = 0;
       
         try {
@@ -161,7 +166,8 @@ public class ImagemController implements Initializable {
                         for(int i = 0; i < line.length;i++) {
                             // System.out.println(line[i]+"\n");
                             // System.out.println(i + line[i]);
-                            if(stringCompare(line[i], pesquisa) == 0){
+                            linhaUppercase = line[i].toUpperCase();
+                            if(stringCompare(linhaUppercase, pesquisaUppercase) == 0){
                                 System.out.println("Encontrei essa palavra");
                                 
                                 Arquivo.pesquisaVetor[indicePesquisa] = Arquivo.vetor[j];
@@ -169,6 +175,10 @@ public class ImagemController implements Initializable {
                                 indicePesquisa++;
                             }else{
                                 // System.out.println("Não encontrei nenhum palavra relacionada a essa pesquisa");
+                                Alert alert = new Alert(AlertType.WARNING);
+                                alert.setTitle("Falha na pesquisa");
+                                alert.setContentText("Não encontrei nenhum palavra relacionada a essa pesquisa");
+
                             }
                         }
                 }
